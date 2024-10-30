@@ -59,8 +59,9 @@ const LoginForm = () => {
 
     return (
         <>
-        <div className="bg-white border border-black py-4 px-12 max-w-xl w-full justify-self-center">
+        <div className="bg-white border border-black container mx-auto py-4 px-4 max-w-xl w-full justify-self-center">
             <Input
+                id={'ForEmail'}
                 type="email"
                 label={translations[language].email}
                 value={email}
@@ -68,10 +69,11 @@ const LoginForm = () => {
                 onBlur={validateEmail}
                 placeholder={translations[language].emailPlaceholder}
                 iconLeft={<EmailIcon />}
-                className='mb-4 flex items-center'
+                className='mb-4 flex md:items-center flex-col sm:flex-row'
                 error={emailError && translations[language].emailError}
             />
             <Input
+                id={'ForEmail'}
                 type="password"
                 label={translations[language].password}
                 value={password}
@@ -79,7 +81,7 @@ const LoginForm = () => {
                 placeholder={translations[language].passwordPlaceholder}
                 iconLeft={<LockIcon />}
                 togglePasswordVisibility
-                className='mb-2 flex items-center'
+                className='mb-2 flex md:items-center flex-col sm:flex-row'
             />
             <div className='flex'>
               <div className="w-1/4"></div>
@@ -91,27 +93,27 @@ const LoginForm = () => {
             </div>
 
             {/* Language Selection */}
-            <div className="mb-4 flex items-center">
-                        <label className="w-1/4 text-gray-700 font-semibold text-xl">
-                            {translations[language].language}
-                        </label>
-                        <div className="relative flex-1">
-                            <select
-                                value={language}
-                                onChange={handleLanguageChange}
-                                className="w-full p-3 text-zinc-700 border-2 appearance-none border-gray-300 rounded focus:outline-none "
-                            >
-                                <option value="en">English</option>
-                                <option value="hi">Hindi</option>
-                                <option value="pa">Punjabi</option>
-                            </select>
-                            <span
-                                className="absolute inset-y-0 right-2 flex items-center border-l-2 border-gray-300 pl-2 pr-1 text-gray-500 pointer-events-none"
-                            >
-                                ▼
-                            </span>
-                        </div>
-                    </div>
+            <div className="mb-4 flex md:items-center flex-col sm:flex-row">
+                <label className="w-1/4 text-gray-700 font-semibold text-xl">
+                    {translations[language].language}
+                </label>
+                <div className="relative flex-1">
+                    <select
+                        value={language}
+                        onChange={handleLanguageChange}
+                        className="w-full p-3 text-zinc-700 border-2 appearance-none border-gray-300 rounded focus:outline-none "
+                    >
+                        <option value="en">English</option>
+                        <option value="hi">Hindi</option>
+                        <option value="pa">Punjabi</option>
+                    </select>
+                    <span
+                        className="absolute inset-y-0 right-2 flex items-center border-l-2 border-gray-300 pl-2 pr-1 text-gray-500 pointer-events-none"
+                    >
+                        ▼
+                    </span>
+                </div>
+            </div>
 
             {/* Remember Me Toggle */}
             <div className="flex items-center">
@@ -124,6 +126,7 @@ const LoginForm = () => {
                     }`}
                   ></div>
                   <input
+                    data-testid="remember-me-checkbox"
                     type="checkbox"
                     className="sr-only"
                     checked={rememberMe}

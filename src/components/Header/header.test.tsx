@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Header from './header';
 
+
 describe('Header Component', () => {
   test('renders logo with correct source and alt text', () => {
     render(<Header />);

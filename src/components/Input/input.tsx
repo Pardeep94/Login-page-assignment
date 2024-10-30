@@ -4,6 +4,7 @@ import EyeIcon from '../../assets/icons/EyeIcon';
 
 
 interface InputProps {
+  id: string;
   type: 'text' | 'email' | 'password';
   label?: string;
   value: string;
@@ -18,6 +19,7 @@ interface InputProps {
 }
 
 const Input: React.FC<InputProps> = ({
+  id,
   type,
   label,
   value,
@@ -38,16 +40,18 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <div className={`${className}`}>
-      {label && <label className="w-1/4 text-xl text-gray-700 font-semibold">{label}</label>}
+      {label && <label htmlFor={id} className="w-1/4 text-xl text-gray-700 font-semibold">{label}</label>}
       
       <div className="flex-1">
         <div className='relative'>
             {iconLeft && (
-            <span className="absolute inset-y-0 left-3 flex items-center text-gray-500">
+            <span data-testid="input-icon-left" className="absolute inset-y-0 left-3 flex items-center text-gray-500">
                 {iconLeft}
             </span>
             )}
             <input
+            id={id}
+            data-testid="input-element"
             type={togglePasswordVisibility && showPassword ? 'text' : type}
             value={value}
             onChange={onChange}
@@ -59,6 +63,7 @@ const Input: React.FC<InputProps> = ({
             />
             {togglePasswordVisibility && type === 'password' && (
             <button
+                data-testid="toggle-password-visibility"
                 type="button"
                 onClick={handleTogglePassword}
                 className="absolute inset-y-0 right-3 flex items-center text-gray-500 focus:outline-none"
@@ -68,7 +73,7 @@ const Input: React.FC<InputProps> = ({
             )}
             
             {iconRight && !togglePasswordVisibility && (
-            <span className="absolute inset-y-0 right-3 flex items-center text-gray-500">
+            <span data-testid="input-icon-right" className="absolute inset-y-0 right-3 flex items-center text-gray-500">
                 {iconRight}
             </span>
             )}
