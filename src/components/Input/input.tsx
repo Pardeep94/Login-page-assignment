@@ -9,10 +9,12 @@ interface InputProps {
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
-  iconLeft?: React.ReactNode; 
-  iconRight?: React.ReactNode;
-  togglePasswordVisibility?: boolean;
-  className?: string;
+  iconLeft?: React.ReactNode; // Left-side icon inside input
+  iconRight?: React.ReactNode; // Right-side icon inside input
+  togglePasswordVisibility?: boolean; // Enable show/hide toggle for passwords
+  error?: string; // Optional error message
+  className?: string; // Additional classes for styling
+  onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -24,7 +26,9 @@ const Input: React.FC<InputProps> = ({
   iconLeft,
   iconRight,
   togglePasswordVisibility = false,
+  error,
   className = '',
+  onBlur
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -47,8 +51,11 @@ const Input: React.FC<InputProps> = ({
             type={togglePasswordVisibility && showPassword ? 'text' : type}
             value={value}
             onChange={onChange}
+            onBlur={onBlur}
             placeholder={placeholder}
-            className={`w-full text-zinc-700  p-3 ${iconLeft ? 'pl-10' : 'pl-3'} ${iconRight ? 'pr-10' : 'pr-3'} border-2 rounded focus:outline-none`}
+            className={`w-full text-zinc-700  p-3 ${iconLeft ? 'pl-10' : 'pl-3'} ${iconRight ? 'pr-10' : 'pr-3'} border-2 rounded ${
+              error ? 'border-red-500' : 'border-gray-300'
+          } focus:outline-none`}
             />
             {togglePasswordVisibility && type === 'password' && (
             <button
@@ -66,7 +73,8 @@ const Input: React.FC<InputProps> = ({
             </span>
             )}
         </div>
-      
+
+        {error && <p data-testid="input-error" className="mt-1 text-red-500 text-sm">{error}</p>}
 
       </div>
       
