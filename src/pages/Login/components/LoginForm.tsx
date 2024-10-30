@@ -83,7 +83,7 @@ const LoginForm = () => {
                 togglePasswordVisibility
                 className='mb-2 flex md:items-center flex-col sm:flex-row'
             />
-            <div className='flex'>
+            <div className='flex flex-col sm:flex-row'>
               <div className="w-1/4"></div>
               <div className="text-left text-zinc-700 mb-4 ">
                   <a href="#" className="text-sm underline">
@@ -116,7 +116,7 @@ const LoginForm = () => {
             </div>
 
             {/* Remember Me Toggle */}
-            <div className="flex items-center">
+            <div className="flex md:items-center ">
                 <div className="w-1/4"></div>
                 <label className="relative inline-flex items-center cursor-pointer">
                   <div className="w-10 h-5 rounded-full shadow-inner bg-zinc-300"></div>
