@@ -120,4 +120,14 @@ src
 
 ---
 
+## Screenshot
+
+![Login Page Screenshot](./src/assets/screenshot/login_page_screenshot.jpeg)
+
+
+![Login Page Responsive Screenshot](./src/assets/screenshot/login_page_responsive_screenshot.jpeg)
+
+
+---
+
 This `README` provides an overview of the project, instructions for setup and usage, testing details, and an outline of the file structure.
